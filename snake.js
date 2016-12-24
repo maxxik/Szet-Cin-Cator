@@ -5,7 +5,7 @@ function Snake(xpos, ypos) {
   this.yspeed = 0;
   this.total = 0;
   this.tail = [];
-  this.name = 'SnaKee';
+  this.name = 'SnaKeeee';
 
   this.eat = function(pos) {
     var d = dist(this.x, this.y, pos.x, pos.y);
