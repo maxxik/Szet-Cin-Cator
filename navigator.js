@@ -1,5 +1,5 @@
 var name = prompt("Choose a name!");
-document.addEventListener("keypress", OnKeyPress);
+document.addEventListener("keydown", onKeyPress);
 
 function onClick(dir) 
 {
@@ -14,16 +14,25 @@ function httpGetReq(theUrl, data)
     return xmlHttp.responseText;
 }
 
-function OnKeyPress (event) {
-            var keyCode = ('charCode' in event) ? event.charCode : event.keyCode;
+function onKeyPress(event) {
+x = event.which || event.keyCode;
+    var dir = 0;
+console.log(x);
+    if (x == 37) {
+        dir = 2;
+    }
+    else if (x == 38) {
+        dir = 1;
+    }
+    else if (x == 39) {
+        dir = 3;
+    }
+    else if (x == 40) {
+        dir = 4;
+    }
+    if(dir != 0)
+    {
+        httpGetReq("./directionUpdate", dir);
+    }
 
-            if (keyCode === 38) {
-                onClick(1)
-            } else if (keyCode === 40) {
-                onClick(4)
-            } else if (keyCode === 39) {
-                onClick(3)
-            } else if (keyCode === 37) {
-                onClick(2)
-            }
-        }
+}
